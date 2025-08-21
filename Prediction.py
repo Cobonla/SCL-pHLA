@@ -19,7 +19,7 @@ torch.cuda.set_device(0)
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 ##Path
-model_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "Final_models")
+model_path = os.path.join(os.path.dirname(__file__), "Final_models")
 folder_path = os.path.join(os.path.dirname(__file__), "Example")
 
 def genData(file, max_len, seed=123):
@@ -115,12 +115,12 @@ class newModel(nn.Module):
         return self.block2(outputs)
 
 def test_predict():
-    #Load model params 
-    ##Example for HLA-C*17:01
-    emb_dim = 512
-    num_layers = 1
-    num_heads = 8
-    batch_size = 64
+    # Load model parameters (adjust according to Model_params)
+    # Example: HLA-C*17:01
+    emb_dim = 512      # Embedding dimension
+    num_layers = 1     # Number of transformer layers
+    num_heads = 8      # Number of attention heads
+    batch_size = 64    # Training batch size
 
     checkpoint = torch.load(os.path.join(model_path, "HLA-C1701", "HLA-C*17:01.pl"), map_location=device)  
     best_model_state = checkpoint['model']
